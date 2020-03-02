@@ -72,9 +72,9 @@ nav * {
   font-size: 1.2em;
 }
 
-nav #next {
+/* nav #next {
   margin-left: 15%;
-}
+} */
 
 #lightbox_container {
     display : none;

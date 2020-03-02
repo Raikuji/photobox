@@ -5,7 +5,10 @@ export const init = ((url) => {
 })
 
 export const load = ((uri) => {
-    return axios.get("" + servUrl + uri)
+    raxios.get("" + servUrl + uri)
+    .then((res) => {
+        return res.data
+    })
     .catch((error) => {
         console.log("Data transfer error : " + error)
     })

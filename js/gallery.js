@@ -10,12 +10,10 @@ export const init = ((id, offs) => {
 export const load = ((url, uri) => {
     photoload.init(url);
     const data = photoload.load(uri);
-    //console.log(data)
+    console.log(data)
     const display = ((data) => {
-        //console.log(data)
         data.forEach(photo => {
             photo = data
-            console.log(photo)
             $('#photobox-gallery')
             .append('<div class="vignette">')
             .append('<img data-img=' + photo.original.href + '\ndata-uri=' + photo.links.self.href + '\nsrc=' + photo.thumbnail.href)

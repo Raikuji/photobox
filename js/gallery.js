@@ -10,16 +10,19 @@ export const init = ((id, offs) => {
 export const load = ((url, uri) => {
     photoload.init(url);
     const data = photoload.load(uri);
-    ((data) => {
+    const display = ((data) => {
         const json = JSON.parse(data);
         let photo;
-        for(let i = 86; i < 90; i++) {
+        console.log(json)
+        for(let i = 90; i < 100; i++) {
             photo = json.filter(elem => elem.id == i)
+            console.log(photo)
             $('#photobox-gallery')
-            .append('<div class="vignette" >')
+            .append('<div class="vignette">')
             .append('<img data-img=' + photo.original.href + '\ndata-uri=' + photo.links.self.href + '\nsrc=' + photo.thumbnail.href)
             .append('<div>' + photo.titre + '</div></div>')
             
         }
     });
+    display(data);
 })

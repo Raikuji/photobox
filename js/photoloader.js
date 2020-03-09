@@ -5,7 +5,7 @@ export const init = ((url) => {
 })
 
 export const load = ((uri) => {
-    raxios.get("" + servUrl + uri)
+    axios.get("" + servUrl + uri)
     .then((res) => {
         return res.data
     })

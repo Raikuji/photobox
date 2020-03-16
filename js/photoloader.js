@@ -5,7 +5,7 @@ export const init = ((url) => {
 })
 
 export const load = ((uri) => {
-    return axios.get("" + servUrl + uri)
+    return axios.get("" + servUrl + uri, {withCredentials: true})
     .catch((error) => {
         console.log("Data transfer error : " + error)
     })

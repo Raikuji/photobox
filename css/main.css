@@ -3,6 +3,9 @@
    License: none (public domain)
 */
 
+#gallery {
+  display: inline;
+}
 
 .gallery-container {
   display: grid;
@@ -44,7 +47,9 @@ footer, header, hgroup, menu, nav, section {
   display: block; }
 
 body {
-  line-height: 1; }
+  line-height: 1; 
+  display: inline;
+}
 
 ol, ul {
   list-style: none; }
@@ -70,6 +75,7 @@ nav {
 }
 nav * {
   font-size: 1.2em;
+  margin: 0.2rem
 }
 
 /* nav #next {
@@ -77,5 +83,25 @@ nav * {
 } */
 
 #lightbox_container {
-    display : none;
+  display: none;
+  background-color: black;
+  color: white;
+}
+
+#lightbox_head {
+  position: relative;
+}
+
+#lightbox_close {
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+}
+
+#lightbox_title {
+  text-align: center;
+}
+
+#lightbox-img {
+  text-align: center;
 }

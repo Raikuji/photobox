@@ -19,7 +19,7 @@ $(document).ready(() => {
 
     $('#lightbox_close').click(() => {
         $('#photobox-gallery').css("display", "grid")
-        $('nav').css("display", "inline")
+        $('nav').css("display", "block")
         $('#lightbox_container').css("display", "none")
         $('body').css("background-color", "white")
     })

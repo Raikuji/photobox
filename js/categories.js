@@ -9,7 +9,7 @@ const display = ((data) => {
 
 export const load = ((url, uri) => {
     photoload.init(url)
-    photoload.load(uri)
+    photoload.load(uri+"categories")
     .then(display)
     .catch((error) => (console.error(error))) 
 })

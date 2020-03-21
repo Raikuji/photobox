@@ -10,14 +10,14 @@ const display = ((data) => {
     $('#photobox-gallery').html("")
     data.data.photos.forEach(photo => {
         $('#photobox-gallery')
-        .append(`<div class="vignette value=${photo.photo.id}"><img data-img="${servUrl}${photo.photo.original.href}"\ndata-uri="${photo.links.self.href}"\nsrc="${servUrl}${photo.photo.thumbnail.href}">${photo.photo.titre}</div></div>`)
+        .append(`<div class="vignette" id="${photo.photo.id}""><img id="${photo.photo.id}" data-img="${servUrl}${photo.photo.original.href}"\ndata-uri="${photo.links.self.href}"\nsrc="${servUrl}${photo.photo.thumbnail.href}"><br>${photo.photo.titre}</div></div>`)
     });
 });
 
 export const load = ((url, uri) => {
     servUrl = url
     photoload.init(url)
-    photoload.load(`${uri}/${idGallery}/photos`)
+    photoload.load(`${uri}categories/${idGallery}/photos`)
     .then(display)
     .catch((error) => (console.error(error))) 
 })

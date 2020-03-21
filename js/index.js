@@ -23,4 +23,12 @@ $(document).ready(() => {
         $('#lightbox_container').css("display", "none")
         $('body').css("background-color", "white")
     })
+
+    $('#previous').click(() => {
+        gallery.changePage(true)
+    })
+
+    $('#next').click(() => {
+        gallery.changePage(false)
+    })
 })

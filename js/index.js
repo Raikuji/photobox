@@ -4,16 +4,19 @@ import * as lightbox from './lightbox.js'
 
 const url = 'https://webetu.iutnc.univ-lorraine.fr'
 const uri = '/www/canals5/photobox/'
+let images
 
 $(document).ready(() => {
     categories.load(url, uri)
     $('#load_gallery').click(() => {
         gallery.init($("#categories :selected").val())
         gallery.load(url, uri)
+
     })
 
     $(document).on("click", ".vignette", (e) => {
-        lightbox.init(e.target.id)
+        images = gallery.getImages()
+        lightbox.init(e.target.id, images)
         lightbox.load(url, uri)
     })
 
@@ -30,5 +33,13 @@ $(document).ready(() => {
 
     $('#next').click(() => {
         gallery.changePage(false)
+    })
+
+    $('#prevImage').click(() => {
+        lightbox.prev()
+    })
+
+    $('#nextImage').click(() => {
+        lightbox.next()
     })
 })

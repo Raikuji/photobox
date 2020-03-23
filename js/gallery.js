@@ -1,6 +1,6 @@
 import * as photoload from './photoloader.js';
 
-let idGallery, servUrl, prev, next
+let idGallery, servUrl, prev, next, images
 
 export const init = ((id) => {
     idGallery = id
@@ -9,10 +9,12 @@ export const init = ((id) => {
 const display = ((data) => {
     prev = data.data.links.prev.href
     next = data.data.links.next.href
+    images = []
     $('#photobox-gallery').html("")
     data.data.photos.forEach(photo => {
         $('#photobox-gallery')
         .append(`<div class="vignette" id="${photo.photo.id}""><img id="${photo.photo.id}" data-img="${servUrl}${photo.photo.original.href}"\ndata-uri="${photo.links.self.href}"\nsrc="${servUrl}${photo.photo.thumbnail.href}"><br>${photo.photo.titre}</div></div>`)
+        images.push(photo.photo.id)
     });
 });
 
@@ -21,6 +23,10 @@ export const changePage = (page) => {
     photoload.load(page ? prev : next)
     .then(display)
     .catch((error) => (console.error(error))) 
+}
+
+export const getImages = () => {
+    return images
 }
 
 export const load = ((url, uri) => {

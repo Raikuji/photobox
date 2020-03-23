@@ -7,7 +7,7 @@ export const init = ((id) => {
 })
 
 const change = (data) => {
-    $('#lightbox-img').html(`<img id="lightbox_full_img" src="${servUrl}${data.data.photo.url.href}"></img>`)
+    $('#lightbox-img').html(`<img id="lightbox_full_img" src="${servUrl}${data.data.photo.url.href}" width="100%"></img>`)
     $('#lightbox_title').html(data.data.photo.titre)
 }
 

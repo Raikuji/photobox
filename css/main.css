@@ -109,15 +109,17 @@ nav * {
 .changePage {
   font-size: 1.3rem;
   display: grid;  
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 7% 86% 7%;
   padding: 0.5rem;
 }
 
 #prevImage {
-  grid-column: 1
+  grid-column: 1;
+  text-align: center;
+  size: 5rem;
 }
 
 #nextImage {
-  grid-column: 2;
-  text-align: right;
+  grid-column: 3;
+  text-align: center;
 }

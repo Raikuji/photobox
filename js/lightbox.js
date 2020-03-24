@@ -39,7 +39,7 @@ export const next = () => {
 const getImageId = (id, image) => {
     let isFind = false
     let newImage = []
-    if((id == images[0] && image) || id == images[images.length - 1] && !image) return images[0]
+    if((id == images[0] && image) || id == images[images.length - 1] && !image) return id
     images.forEach((element) => {
         if(id == element) {
             newImage = image ? images[images.indexOf(element) - 1] : images[images.indexOf(element) + 1]

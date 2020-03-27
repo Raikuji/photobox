@@ -93,6 +93,9 @@ nav * {
 }
 
 #lightbox_close {
+  background-color: rgb(49, 49, 49);
+  color: white;
+  border: none;
   position: absolute;
   top: -1rem;
   left: 1rem;

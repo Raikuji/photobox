@@ -153,3 +153,39 @@ nav * {
   padding-left: 2rem;
   margin: 0rem;
 }
+
+#comments-viewer {
+  background-color: white;
+  color: black;
+}
+
+#comments-viewer > h1 {
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  margin: 0rem;
+  padding-top: 1.5rem;
+}
+
+#comments-viewer > h2 {
+  font-size: 1rem;
+  padding-left: 2rem;
+  margin: 0rem;
+  padding-top: 1.5rem;
+}
+
+#comments-viewer > h4 {
+  font-size: 0.9rem;
+  padding-left: 2rem;
+  margin: 0rem;
+  padding-top: 0.5rem;
+  font-weight: normal;
+}
+
+#comments-viewer > p {
+  font-size: 1rem;
+  padding-left: 2rem;
+  margin: 0rem;
+  padding-top: 0.5rem;
+  font-weight: normal;
+}

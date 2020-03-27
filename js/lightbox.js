@@ -24,6 +24,15 @@ const display = () => {
     $('#lightbox_container').css("display", "flex")
 }
 
+const displayComments = (data) => {
+    data.data.comments.forEach(comment => {
+        $("#comments-viewer").append(`<h2>${comment.titre}</h2>`)
+        $("#comments-viewer").append(`<h4>Posté par ${comment.pseudo} le ${comment.date}</h4>`)
+        $("#comments-viewer").append(`<p>${comment.content}</p>`)
+        console.log(comment)
+    })
+}
+
 export const prev = () => {
     photoload.init(servUrl)
     if(isPageEnd(parseInt(idPhoto), true)) {
@@ -113,5 +122,10 @@ export const load = ((url, uri) => {
     photoload.load(`${uri}photos/${idPhoto}`)
     .then(change)
     .then(display)
+    .then(() => {
+        photoload.load(`${uri}photos/${idPhoto}/comments`)
+        .then(displayComments)
+        .catch((error) => (console.error(error))) 
+    })
     .catch((error) => (console.error(error))) 
 })

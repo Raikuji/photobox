@@ -28,11 +28,11 @@ $(document).ready(() => {
     })
 
     $('#previous').click(() => {
-        gallery.changePage(true)
+        gallery.changePage(true, false)
     })
 
     $('#next').click(() => {
-        gallery.changePage(false)
+        gallery.changePage(false, false)
     })
 
     $('#prevImage').click(() => {

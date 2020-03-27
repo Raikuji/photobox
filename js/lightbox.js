@@ -22,32 +22,85 @@ const display = () => {
 
 export const prev = () => {
     photoload.init(servUrl)
-    idPhoto = getImageId(idPhoto, true)
-    photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
-    .then(change)
-    .catch((error) => (console.error(error)))
+    if(isPageEnd(parseInt(idPhoto), true)) {
+        getImageId(idPhoto, true)
+        .then(images = gallery.getImages())
+        .then(() => {
+            idPhoto = images[images.length - 1]
+            photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
+            .then(change)
+            .catch((error) => (console.error(error)))
+        })
+    } else {
+        photoload.init(servUrl)
+        idPhoto = getImageId(idPhoto, true)
+        photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
+        .then(change)
+        .catch((error) => (console.error(error)))
+    }
 }
 
 export const next = () => {
     photoload.init(servUrl)
-    idPhoto = getImageId(idPhoto, false)
-    photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
-    .then(change)
-    .catch((error) => (console.error(error)))
+    if(isPageEnd(parseInt(idPhoto), false)) {
+        getImageId(idPhoto, false)
+        .then(images = gallery.getImages())
+        .then(() => {
+            idPhoto = images[0]
+            photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
+            .then(change)
+            .catch((error) => (console.error(error)))
+        })
+    } else {
+        photoload.init(servUrl)
+        idPhoto = getImageId(idPhoto, false)
+        photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
+        .then(change)
+        .catch((error) => (console.error(error)))
+    }
 }
 
-const getImageId = (id, image) => {
-    let isFind = false
-    let newImage = []
-    if((id == images[0] && image) || id == images[images.length - 1] && !image) return id
+const isPageEnd = (id, isPrev) => {
+    if((images.indexOf(id) == images.length - 1 && !isPrev) || (images.indexOf(id) == 0 && isPrev)) {
+        return true
+    } else return false
+}
+
+const getImageId = (id, isPrev) => {
+    console.log(id == images[0] && isPrev)
+    if(id == images[0] && isPrev) {
+        return otherPageId(isPrev)
+    } else if(id == images[images.length - 1] && !isPrev) {
+        return otherPageId(isPrev)
+    } else {
+        return samePageId(id, isPrev)
+    }
+}
+
+const samePageId = (id, isPrev) => {
+    let newImage = id;
     images.forEach((element) => {
         if(id == element) {
-            newImage = image ? images[images.indexOf(element) - 1] : images[images.indexOf(element) + 1]
-            isFind = true
+            newImage = isPrev ? images[images.indexOf(element) - 1] : images[images.indexOf(element) + 1]
         }
     })
-    if(isFind) return newImage
-    else return images[0]
+    return newImage
+}
+
+const otherPageId = (isPrev) => {
+    if(isPrev) {
+        return gallery.changePage(true, true)
+        .then(() => {
+            images = gallery.getImages()
+        })
+        .catch((error) => (console.error(error)))
+    } else {
+        return gallery.changePage(false, true)
+        .then(() => {
+            images = gallery.getImages()
+        })
+        .catch((error) => (console.error(error)))
+    }
 }
 
 export const load = ((url, uri) => {

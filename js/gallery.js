@@ -18,11 +18,17 @@ const display = ((data) => {
     });
 });
 
-export const changePage = (page) => {
+export const changePage = (page, lb) => {
     photoload.init(servUrl)
-    photoload.load(page ? prev : next)
-    .then(display)
-    .catch((error) => (console.error(error))) 
+    if(!lb) {
+        photoload.load(page ? prev : next)
+        .then(display)
+        .catch((error) => (console.error(error))) 
+    }
+    if(lb) {        
+        return photoload.load(page ? prev : next)
+               .then(display)
+    }
 }
 
 export const getImages = () => {

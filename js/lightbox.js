@@ -11,13 +11,17 @@ export const init = ((id, img) => {
 const change = (data) => {
     $('#lightbox-img').html(`<img id="lightbox_full_img" src="${servUrl}${data.data.photo.url.href}" width="100%"></img>`)
     $('#lightbox_title').html(data.data.photo.titre)
+    $('#format').html(`${$('#format').html()}${data.data.photo.format}`)
+    $('#type').html(`${$('#type').html()}${data.data.photo.type}`)
+    $('#size').html(`${$('#size').html()}${data.data.photo.size}`)
+    $('#width').html(`${$('#width').html()}${data.data.photo.width}`)
+    $('#height').html(`${$('#height').html()}${data.data.photo.height}`)
 }
 
 const display = () => {
     $('#photobox-gallery').css("display", "none")
     $('nav').css("display", "none")
-    $('#lightbox_container').css("display", "inline")
-    $('body').css("background-color", "black")
+    $('#lightbox_container').css("display", "flex")
 }
 
 export const prev = () => {

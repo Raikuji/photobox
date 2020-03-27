@@ -49,6 +49,8 @@ footer, header, hgroup, menu, nav, section {
 body {
   line-height: 1; 
   display: inline;
+  height: 100%;
+  margin: 0
 }
 
 ol, ul {
@@ -86,6 +88,8 @@ nav * {
   display: none;
   background-color: black;
   color: white;
+  flex-flow: column;
+  height: 100%;
 }
 
 #lightbox_head {
@@ -99,14 +103,17 @@ nav * {
   position: absolute;
   top: -1rem;
   left: 1rem;
+  margin-top: 1rem;
 }
 
 #lightbox_title {
   text-align: center;
+  padding-top: 2rem;
 }
 
 #lightbox-img {
   text-align: center;
+  padding-bottom: 3rem;
 }
 
 .changePage {
@@ -125,4 +132,24 @@ nav * {
 #nextImage {
   grid-column: 3;
   text-align: center;
+}
+
+#lightbox_info {
+  background-color: white;
+  color: black;
+}
+
+#lightbox_info > h1 {
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  margin: 0rem;
+}
+
+#lightbox_info > li {
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  margin: 0rem;
 }

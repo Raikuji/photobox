@@ -11,11 +11,11 @@ export const init = ((id, img) => {
 const change = (data) => {
     $('#lightbox-img').html(`<img id="lightbox_full_img" src="${servUrl}${data.data.photo.url.href}" width="100%"></img>`)
     $('#lightbox_title').html(data.data.photo.titre)
-    $('#format').html(`${$('#format').html()}${data.data.photo.format}`)
-    $('#type').html(`${$('#type').html()}${data.data.photo.type}`)
-    $('#size').html(`${$('#size').html()}${data.data.photo.size}`)
-    $('#width').html(`${$('#width').html()}${data.data.photo.width}`)
-    $('#height').html(`${$('#height').html()}${data.data.photo.height}`)
+    $('#format').html(`format : ${data.data.photo.format}`)
+    $('#type').html(`type : ${data.data.photo.type}`)
+    $('#size').html(`size : ${data.data.photo.size}`)
+    $('#width').html(`width : ${data.data.photo.width}`)
+    $('#height').html(`height : ${data.data.photo.height}`)
 }
 
 const display = () => {
@@ -25,6 +25,7 @@ const display = () => {
 }
 
 const displayComments = (data) => {
+    $("#comments-viewer").html("")
     data.data.comments.forEach(comment => {
         $("#comments-viewer").append(`<h2>${comment.titre}</h2>`)
         $("#comments-viewer").append(`<h4>Posté par ${comment.pseudo} le ${comment.date}</h4>`)

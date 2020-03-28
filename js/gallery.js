@@ -2,10 +2,18 @@ import * as photoload from './photoloader.js';
 
 let idGallery, servUrl, prev, next, images
 
+/**
+ * Fonction initialisant les parametres a utiliser pour affcher une galerie d'image
+ * @param {int} id id de la galerie a afficher
+ */
 export const init = ((id) => {
     idGallery = id
 })
 
+/**
+ * Fonction permattant d'afficher les donnees d'une page d'une galerie
+ * @param {Galerie} data donnee da la galerie a afficher
+ */
 const display = ((data) => {
     prev = data.data.links.prev.href
     next = data.data.links.next.href
@@ -18,23 +26,29 @@ const display = ((data) => {
     });
 });
 
-export const changePage = (page, lb) => {
+/**
+ * Fonction permettant de changer de page 
+ * @param {booelan} page booleen permettant de determiner s'il faut charger la page precedente ou la page suivante
+ */
+export const changePage = (page) => {
     photoload.init(servUrl)
-    if(!lb) {
-        photoload.load(page ? prev : next)
-        .then(display)
-        .catch((error) => (console.error(error))) 
-    }
-    if(lb) {        
-        return photoload.load(page ? prev : next)
-               .then(display)
-    }
+    photoload.load(page ? prev : next)
+    .then(display)
+    .catch((error) => (console.error(error))) 
 }
 
+/**
+ * Fonction retournant la liste des images d'une page
+ */
 export const getImages = () => {
     return images
 }
 
+/**
+ * Fonction permettant de charger un page d'une galerie
+ * @param {String} url url de la galerie 
+ * @param {String} uri uri de la galerie
+ */
 export const load = ((url, uri) => {
     servUrl = url
     photoload.init(url)

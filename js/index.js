@@ -6,6 +6,9 @@ const url = 'https://webetu.iutnc.univ-lorraine.fr'
 const uri = '/www/canals5/photobox/'
 let images
 
+/**
+ * Fonction qui initialise toutes les actions une fois que la page est chargee
+ */
 $(document).ready(() => {
     categories.load(url, uri)
     $('#load_gallery').click(() => {
@@ -28,11 +31,11 @@ $(document).ready(() => {
     })
 
     $('#previous').click(() => {
-        gallery.changePage(true, false)
+        gallery.changePage(true)
     })
 
     $('#next').click(() => {
-        gallery.changePage(false, false)
+        gallery.changePage(false)
     })
 
     $('#prevImage').click(() => {

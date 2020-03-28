@@ -1,7 +1,7 @@
 import * as photoload from './photoloader.js';
 import * as gallery from './gallery.js'
 
-let idPhoto, servUrl, images
+let idPhoto, servUrl, images, servUri
 
 export const init = ((id, img) => {
     idPhoto = id
@@ -43,6 +43,11 @@ export const prev = () => {
             idPhoto = images[images.length - 1]
             photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
             .then(change)
+            .then(() => {
+                photoload.load(`${servUri}photos/${idPhoto}/comments`)
+                .then(displayComments)
+                .catch((error) => (console.error(error))) 
+            })
             .catch((error) => (console.error(error)))
         })
     } else {
@@ -50,6 +55,11 @@ export const prev = () => {
         idPhoto = getImageId(idPhoto, true)
         photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
         .then(change)
+        .then(() => {
+            photoload.load(`${servUri}photos/${idPhoto}/comments`)
+            .then(displayComments)
+            .catch((error) => (console.error(error))) 
+        })
         .catch((error) => (console.error(error)))
     }
 }
@@ -63,6 +73,11 @@ export const next = () => {
             idPhoto = images[0]
             photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
             .then(change)
+            .then(() => {
+                photoload.load(`${servUri}photos/${idPhoto}/comments`)
+                .then(displayComments)
+                .catch((error) => (console.error(error))) 
+            })
             .catch((error) => (console.error(error)))
         })
     } else {
@@ -70,6 +85,11 @@ export const next = () => {
         idPhoto = getImageId(idPhoto, false)
         photoload.load(`/www/canals5/photobox/photos/${idPhoto}`)
         .then(change)
+        .then(() => {
+            photoload.load(`${servUri}photos/${idPhoto}/comments`)
+            .then(displayComments)
+            .catch((error) => (console.error(error))) 
+        })
         .catch((error) => (console.error(error)))
     }
 }
@@ -119,6 +139,7 @@ const otherPageId = (isPrev) => {
 
 export const load = ((url, uri) => {
     servUrl = url
+    servUri = uri
     photoload.init(url)
     photoload.load(`${uri}photos/${idPhoto}`)
     .then(change)

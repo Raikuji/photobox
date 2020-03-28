@@ -1,5 +1,7 @@
 # Projet Photobox
 
+``Projet par Gachenot Antoine et Lucas Burté``
+
 [Projet photobox sur github](https://github.com/Raikuji/photobox)
 
 Chaque fonction utiliser dans les modules a été documentée sous forme de JSDoc, permattant la comprehension de chacune des fonction, cependant, voici l'arbre de lancement de chaque fonction pour chaque module :
